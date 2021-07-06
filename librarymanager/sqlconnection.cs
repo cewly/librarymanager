@@ -28,7 +28,55 @@ namespace sqlconnection
             string sql = "SELECT * from book ";
             cmd = new MySqlCommand(sql, conn);
             rdr = cmd.ExecuteReader();
+            Console.WriteLine("图书库数据读取成功");
             return rdr;
+        }
+
+        public MySqlDataReader ListCD()//连接光盘类数据库
+        {
+            string sql = "SELECT * from CD ";
+            cmd = new MySqlCommand(sql, conn);
+            rdr = cmd.ExecuteReader();
+            Console.WriteLine("CD库数据读取成功");
+            return rdr;
+            
+        }
+
+        public MySqlDataReader Listart()//连接图画类数据库
+        {
+            string sql = "SELECT * from art";
+            cmd = new MySqlCommand(sql, conn);
+            rdr = cmd.ExecuteReader();
+            Console.WriteLine("CD库数据读取成功");
+            return rdr;
+        }
+
+        public MySqlDataReader numbersearch(string number)
+        {
+            if (int.Parse(number) >= 30000)
+            {
+                string sql = "SELECT * from art where id = "+number;
+                cmd = new MySqlCommand(sql, conn);
+                rdr = cmd.ExecuteReader();
+                return rdr;
+            }
+            else
+            {
+                if (int.Parse(number) >= 20000)
+                {
+                    string sql = "SELECT * from cd where id = " + number;
+                    cmd = new MySqlCommand(sql, conn);
+                    rdr = cmd.ExecuteReader();
+                    return rdr;
+                }
+                else
+                {
+                    string sql = "SELECT * from book where id = " + number;
+                    cmd = new MySqlCommand(sql, conn);
+                    rdr = cmd.ExecuteReader();
+                    return rdr;
+                }
+            }
         }
         public int Checkuser(string name,string password)//登录操作
         {

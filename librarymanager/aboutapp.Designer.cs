@@ -31,6 +31,8 @@ namespace librarymanager
         {
             this.label1 = new System.Windows.Forms.Label();
             this.address = new System.Windows.Forms.LinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -46,7 +48,7 @@ namespace librarymanager
             // address
             // 
             this.address.AutoSize = true;
-            this.address.Location = new System.Drawing.Point(62, 122);
+            this.address.Location = new System.Drawing.Point(60, 139);
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(115, 15);
             this.address.TabIndex = 1;
@@ -54,11 +56,31 @@ namespace librarymanager
             this.address.Text = "github项目地址";
             this.address.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.address_LinkClicked);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(76, 75);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 15);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "项目成员：";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(47, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(142, 15);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "胡天驰，耿慧，张蕾";
+            // 
             // aboutapp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(258, 207);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.address);
             this.Controls.Add(this.label1);
             this.Name = "aboutapp";
@@ -72,5 +94,7 @@ namespace librarymanager
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel address;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
