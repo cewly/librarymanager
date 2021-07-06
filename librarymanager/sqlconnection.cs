@@ -51,7 +51,7 @@ namespace sqlconnection
             return rdr;
         }
 
-        public MySqlDataReader numbersearch(string number)
+        public MySqlDataReader numbersearch(string number)//根据编号查找数据
         {
             if (int.Parse(number) >= 30000)
             {
@@ -75,6 +75,31 @@ namespace sqlconnection
                     cmd = new MySqlCommand(sql, conn);
                     rdr = cmd.ExecuteReader();
                     return rdr;
+                }
+            }
+        }
+
+        public void deletedata(string number)
+        {
+            if (int.Parse(number) >= 30000)
+            {
+                string sql = "DELETE FROM art WHERE id ="+number;
+                cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                if (int.Parse(number) >= 20000)
+                {
+                    string sql = "DELETE FROM cd WHERE id =" + number;
+                    cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    string sql = "DELETE FROM book WHERE id =" + number;
+                    cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

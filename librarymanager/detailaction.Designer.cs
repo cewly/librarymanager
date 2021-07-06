@@ -205,6 +205,7 @@ namespace librarymanager
             this.deleteButton.TabIndex = 17;
             this.deleteButton.Text = "删除";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // detailaction
             // 

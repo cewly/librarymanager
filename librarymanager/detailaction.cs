@@ -14,7 +14,7 @@ namespace librarymanager
 {
     public partial class detailaction : Form
     {
-        public detailaction(string number,int authority)
+        public detailaction(string number, int authority)
         {
             InitializeComponent();
             //导入数据库数据
@@ -23,7 +23,7 @@ namespace librarymanager
             MySqlDataReader rdr = Msqldatabase.numbersearch(number);
             rdr.Read();
             //设置详情页面信息
-            if (int.Parse(number)>=30000)
+            if (int.Parse(number) >= 30000)
             {
                 nameBox.Text = rdr[1].ToString();
                 numberBox.Text = rdr[0].ToString();
@@ -33,11 +33,11 @@ namespace librarymanager
                 textBox1.Text = rdr[4].ToString();
                 textBox2.Text = rdr[5].ToString();
                 setart();
-             }
+            }
             else
-                { 
-                   if (int.Parse(number)>=20000)
-                    {
+            {
+                if (int.Parse(number) >= 20000)
+                {
                     nameBox.Text = rdr[1].ToString();
                     numberBox.Text = rdr[0].ToString();
                     authorBox.Text = rdr[2].ToString();
@@ -47,9 +47,9 @@ namespace librarymanager
                     textBox2.Text = rdr[6].ToString();
                     textBox3.Text = rdr[7].ToString();
                     setCD();
-                    }
-                   else 
-                   {
+                }
+                else
+                {
                     nameBox.Text = rdr[1].ToString();
                     numberBox.Text = rdr[0].ToString();
                     authorBox.Text = rdr[2].ToString();
@@ -59,24 +59,26 @@ namespace librarymanager
                     textBox2.Text = rdr[4].ToString();
                     textBox3.Text = rdr[5].ToString();
                     setbook();
-                    }
-                 }
+                }
+            }
             rdr.Close();
+            Msqldatabase.Closedatabase();
             if (authority == 2)//限制用户修改权限
             {
                 deleteButton.Enabled = false;
                 modifyButton.Enabled = false;
-                nameBox.ReadOnly = true;
-                numberBox.ReadOnly = true;
-                levelBox.ReadOnly = true;
-                authorBox.ReadOnly = true;
-                borrowBox.ReadOnly = true;
-                textBox1.ReadOnly = true;
-                textBox2.ReadOnly = true;
-                textBox3.ReadOnly = true;
             }
+            nameBox.ReadOnly = true;
+            numberBox.ReadOnly = true;
+            levelBox.ReadOnly = true;
+            authorBox.ReadOnly = true;
+            borrowBox.ReadOnly = true;
+            textBox1.ReadOnly = true;
+            textBox2.ReadOnly = true;
+            textBox3.ReadOnly = true;
+
         }
-        public void setbook()
+            public void setbook()
         {
             label1.Text = "出版社:";
             label2.Text = "ISBN号:";
@@ -102,7 +104,24 @@ namespace librarymanager
 
         private void modifyButton_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            Sqldatabase Msqldatabase = new Sqldatabase();
+            Msqldatabase.Setdatabase();
+            try
+            {
+                Msqldatabase.deletedata(numberBox.Text);
+                MessageBox.Show("删除成功!");
+            }
+            catch
+            {
+                MessageBox.Show("删除失败!");
+            }
+            Msqldatabase.Closedatabase();
+            this.Close();
         }
     }
 }
