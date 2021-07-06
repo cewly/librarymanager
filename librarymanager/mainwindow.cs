@@ -20,7 +20,7 @@ namespace librarymanager
             authority = power;
             if (authority == 2)
             {
-                this.addBookButton.Enabled=false;
+                this.addBookButton.Enabled = false;
             }
         }
 
@@ -30,21 +30,83 @@ namespace librarymanager
             this.listView.Columns.Clear();
             this.listView.Columns.Add("标题", 200, HorizontalAlignment.Center);
             this.listView.Columns.Add("编号", 80, HorizontalAlignment.Center);
-            this.listView.Columns.Add("出版社", 120, HorizontalAlignment.Center);
+            this.listView.Columns.Add("作者", 80, HorizontalAlignment.Center);
+            this.listView.Columns.Add("评级", 80, HorizontalAlignment.Center);
             this.listView.Columns.Add("借阅情况", 100, HorizontalAlignment.Center);
             this.listView.Items.Clear();
             //导入数据库数据;
             Sqldatabase Msqldatabase = new Sqldatabase();
             Msqldatabase.Setdatabase();
-            MySqlDataReader rdr= Msqldatabase.Listbook();
-            while(rdr.Read())
+            MySqlDataReader rdr = Msqldatabase.Listbook();
+            while (rdr.Read())
             {
                 ListViewItem lv = new ListViewItem();
                 lv.Text = rdr[1].ToString();//设置第一行显示的数据
                 //绑定剩余列的数据
                 lv.SubItems.Add(rdr[0].ToString());
-                lv.SubItems.Add(rdr[3].ToString());
+                lv.SubItems.Add(rdr[2].ToString());
+                lv.SubItems.Add(rdr[7].ToString());
                 lv.SubItems.Add(rdr[6].ToString());
+                //一定记得行数据创建完毕后添加到列表中
+                listView.Items.Add(lv);
+            }
+            rdr.Close();
+            Msqldatabase.Closedatabase();
+        }
+
+        private void CDListButton_Click(object sender, EventArgs e)
+        {
+            //初始化光盘列表
+            this.listView.Columns.Clear();
+            this.listView.Columns.Add("标题", 200, HorizontalAlignment.Center);
+            this.listView.Columns.Add("编号", 80, HorizontalAlignment.Center);
+            this.listView.Columns.Add("作者", 80, HorizontalAlignment.Center);
+            this.listView.Columns.Add("评级", 80, HorizontalAlignment.Center);
+            this.listView.Columns.Add("借阅情况", 100, HorizontalAlignment.Center);
+            this.listView.Items.Clear();
+            //导入数据库数据;
+            Sqldatabase Msqldatabase = new Sqldatabase();
+            Msqldatabase.Setdatabase();
+            MySqlDataReader rdr = Msqldatabase.ListCD();
+            while (rdr.Read())
+            {
+                ListViewItem lv = new ListViewItem();
+                lv.Text = rdr[1].ToString();//设置第一行显示的数据
+                //绑定剩余列的数据
+                lv.SubItems.Add(rdr[0].ToString());
+                lv.SubItems.Add(rdr[2].ToString());
+                lv.SubItems.Add(rdr[3].ToString());
+                lv.SubItems.Add(rdr[4].ToString());
+                //一定记得行数据创建完毕后添加到列表中
+                listView.Items.Add(lv);
+            }
+            rdr.Close();
+            Msqldatabase.Closedatabase();
+        }
+
+        private void ArtListButton_Click(object sender, EventArgs e)
+        {
+            //初始化光盘列表
+            this.listView.Columns.Clear();
+            this.listView.Columns.Add("标题", 200, HorizontalAlignment.Center);
+            this.listView.Columns.Add("编号", 80, HorizontalAlignment.Center);
+            this.listView.Columns.Add("作者", 80, HorizontalAlignment.Center);
+            this.listView.Columns.Add("评级", 80, HorizontalAlignment.Center);
+            this.listView.Columns.Add("借阅情况", 100, HorizontalAlignment.Center);
+            this.listView.Items.Clear();
+            //导入数据库数据;
+            Sqldatabase Msqldatabase = new Sqldatabase();
+            Msqldatabase.Setdatabase();
+            MySqlDataReader rdr = Msqldatabase.Listart();
+            while (rdr.Read())
+            {
+                ListViewItem lv = new ListViewItem();
+                lv.Text = rdr[1].ToString();//设置第一行显示的数据
+                //绑定剩余列的数据
+                lv.SubItems.Add(rdr[0].ToString());
+                lv.SubItems.Add(rdr[2].ToString());
+                lv.SubItems.Add(rdr[3].ToString());
+                lv.SubItems.Add(rdr[4].ToString());
                 //一定记得行数据创建完毕后添加到列表中
                 listView.Items.Add(lv);
             }
@@ -56,11 +118,10 @@ namespace librarymanager
         {
             foreach (ListViewItem lv in listView.SelectedItems)
             {
-                detailaction detail = new detailaction(lv.SubItems[1].Text);
+                detailaction detail = new detailaction(lv.SubItems[1].Text,authority);
+                detail.Show();
             }
-        }
-        public int authority;
-
+        }       
         private void switchuser_Click(object sender, EventArgs e)
         {
             loginaction login = new loginaction();
@@ -73,5 +134,7 @@ namespace librarymanager
             aboutapp app = new aboutapp();
             app.Show();
         }
+
+        public int authority;
     }
 }

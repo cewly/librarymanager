@@ -32,6 +32,8 @@ namespace librarymanager
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.图书数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.光盘数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.图画数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导入用户数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutme = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,8 +54,6 @@ namespace librarymanager
             this.CDListButton = new System.Windows.Forms.Button();
             this.ArtListButton = new System.Windows.Forms.Button();
             this.DetailButton = new System.Windows.Forms.Button();
-            this.光盘数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.图画数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,13 +84,25 @@ namespace librarymanager
             // 图书数据ToolStripMenuItem
             // 
             this.图书数据ToolStripMenuItem.Name = "图书数据ToolStripMenuItem";
-            this.图书数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.图书数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.图书数据ToolStripMenuItem.Text = "图书数据";
+            // 
+            // 光盘数据ToolStripMenuItem
+            // 
+            this.光盘数据ToolStripMenuItem.Name = "光盘数据ToolStripMenuItem";
+            this.光盘数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.光盘数据ToolStripMenuItem.Text = "光盘数据";
+            // 
+            // 图画数据ToolStripMenuItem
+            // 
+            this.图画数据ToolStripMenuItem.Name = "图画数据ToolStripMenuItem";
+            this.图画数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.图画数据ToolStripMenuItem.Text = "图画数据";
             // 
             // 导入用户数据ToolStripMenuItem
             // 
             this.导入用户数据ToolStripMenuItem.Name = "导入用户数据ToolStripMenuItem";
-            this.导入用户数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.导入用户数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.导入用户数据ToolStripMenuItem.Text = "用户数据";
             // 
             // UserMenu
@@ -105,13 +117,13 @@ namespace librarymanager
             // aboutme
             // 
             this.aboutme.Name = "aboutme";
-            this.aboutme.Size = new System.Drawing.Size(224, 26);
+            this.aboutme.Size = new System.Drawing.Size(152, 26);
             this.aboutme.Text = "个人信息";
             // 
             // switchuser
             // 
             this.switchuser.Name = "switchuser";
-            this.switchuser.Size = new System.Drawing.Size(224, 26);
+            this.switchuser.Size = new System.Drawing.Size(152, 26);
             this.switchuser.Text = "切换用户";
             this.switchuser.Click += new System.EventHandler(this.switchuser_Click);
             // 
@@ -126,7 +138,7 @@ namespace librarymanager
             // aboutappMenu
             // 
             this.aboutappMenu.Name = "aboutappMenu";
-            this.aboutappMenu.Size = new System.Drawing.Size(224, 26);
+            this.aboutappMenu.Size = new System.Drawing.Size(164, 26);
             this.aboutappMenu.Text = "关于应用...";
             this.aboutappMenu.Click += new System.EventHandler(this.aboutappMenu_Click);
             // 
@@ -248,6 +260,7 @@ namespace librarymanager
             this.CDListButton.TabIndex = 14;
             this.CDListButton.Text = "光盘列表";
             this.CDListButton.UseVisualStyleBackColor = true;
+            this.CDListButton.Click += new System.EventHandler(this.CDListButton_Click);
             // 
             // ArtListButton
             // 
@@ -258,6 +271,7 @@ namespace librarymanager
             this.ArtListButton.TabIndex = 15;
             this.ArtListButton.Text = "图画列表";
             this.ArtListButton.UseVisualStyleBackColor = true;
+            this.ArtListButton.Click += new System.EventHandler(this.ArtListButton_Click);
             // 
             // DetailButton
             // 
@@ -269,18 +283,6 @@ namespace librarymanager
             this.DetailButton.Text = "详情";
             this.DetailButton.UseVisualStyleBackColor = true;
             this.DetailButton.Click += new System.EventHandler(this.DetailButton_Click);
-            // 
-            // 光盘数据ToolStripMenuItem
-            // 
-            this.光盘数据ToolStripMenuItem.Name = "光盘数据ToolStripMenuItem";
-            this.光盘数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.光盘数据ToolStripMenuItem.Text = "光盘数据";
-            // 
-            // 图画数据ToolStripMenuItem
-            // 
-            this.图画数据ToolStripMenuItem.Name = "图画数据ToolStripMenuItem";
-            this.图画数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.图画数据ToolStripMenuItem.Text = "图画数据";
             // 
             // mainwindow
             // 

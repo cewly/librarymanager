@@ -33,8 +33,8 @@ namespace librarymanager
             this.nameBox = new System.Windows.Forms.TextBox();
             this.numberBox = new System.Windows.Forms.TextBox();
             this.number = new System.Windows.Forms.Label();
-            this.typeBox = new System.Windows.Forms.TextBox();
-            this.type = new System.Windows.Forms.Label();
+            this.authorBox = new System.Windows.Forms.TextBox();
+            this.author = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -44,6 +44,8 @@ namespace librarymanager
             this.modifyButton = new System.Windows.Forms.Button();
             this.levelBox = new System.Windows.Forms.TextBox();
             this.level = new System.Windows.Forms.Label();
+            this.typeBox = new System.Windows.Forms.TextBox();
+            this.type = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // name
@@ -80,26 +82,26 @@ namespace librarymanager
             this.number.TabIndex = 2;
             this.number.Text = "编号:";
             // 
-            // typeBox
+            // authorBox
             // 
-            this.typeBox.Location = new System.Drawing.Point(127, 88);
-            this.typeBox.Name = "typeBox";
-            this.typeBox.Size = new System.Drawing.Size(235, 25);
-            this.typeBox.TabIndex = 5;
+            this.authorBox.Location = new System.Drawing.Point(127, 88);
+            this.authorBox.Name = "authorBox";
+            this.authorBox.Size = new System.Drawing.Size(235, 25);
+            this.authorBox.TabIndex = 5;
             // 
-            // type
+            // author
             // 
-            this.type.AutoSize = true;
-            this.type.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.type.Location = new System.Drawing.Point(62, 91);
-            this.type.Name = "type";
-            this.type.Size = new System.Drawing.Size(51, 17);
-            this.type.TabIndex = 4;
-            this.type.Text = "类型:";
+            this.author.AutoSize = true;
+            this.author.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.author.Location = new System.Drawing.Point(62, 91);
+            this.author.Name = "author";
+            this.author.Size = new System.Drawing.Size(51, 17);
+            this.author.TabIndex = 4;
+            this.author.Text = "作者:";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(127, 150);
+            this.textBox1.Location = new System.Drawing.Point(127, 183);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(235, 25);
             this.textBox1.TabIndex = 7;
@@ -108,7 +110,7 @@ namespace librarymanager
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(35, 153);
+            this.label1.Location = new System.Drawing.Point(35, 186);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 6;
@@ -116,7 +118,7 @@ namespace librarymanager
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(127, 181);
+            this.textBox2.Location = new System.Drawing.Point(127, 214);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(235, 25);
             this.textBox2.TabIndex = 9;
@@ -125,7 +127,7 @@ namespace librarymanager
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(34, 185);
+            this.label2.Location = new System.Drawing.Point(34, 218);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 17);
             this.label2.TabIndex = 8;
@@ -133,7 +135,7 @@ namespace librarymanager
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(127, 212);
+            this.textBox3.Location = new System.Drawing.Point(127, 245);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(235, 25);
             this.textBox3.TabIndex = 11;
@@ -142,7 +144,7 @@ namespace librarymanager
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(52, 215);
+            this.label3.Location = new System.Drawing.Point(34, 248);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 17);
             this.label3.TabIndex = 10;
@@ -157,6 +159,7 @@ namespace librarymanager
             this.modifyButton.TabIndex = 12;
             this.modifyButton.Text = "修改";
             this.modifyButton.UseVisualStyleBackColor = true;
+            this.modifyButton.Click += new System.EventHandler(this.modifyButton_Click);
             // 
             // levelBox
             // 
@@ -175,11 +178,30 @@ namespace librarymanager
             this.level.TabIndex = 13;
             this.level.Text = "评级:";
             // 
+            // typeBox
+            // 
+            this.typeBox.Location = new System.Drawing.Point(127, 150);
+            this.typeBox.Name = "typeBox";
+            this.typeBox.Size = new System.Drawing.Size(235, 25);
+            this.typeBox.TabIndex = 16;
+            // 
+            // type
+            // 
+            this.type.AutoSize = true;
+            this.type.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.type.Location = new System.Drawing.Point(62, 153);
+            this.type.Name = "type";
+            this.type.Size = new System.Drawing.Size(59, 17);
+            this.type.TabIndex = 15;
+            this.type.Text = "类型：";
+            // 
             // detailaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 408);
+            this.Controls.Add(this.typeBox);
+            this.Controls.Add(this.type);
             this.Controls.Add(this.levelBox);
             this.Controls.Add(this.level);
             this.Controls.Add(this.modifyButton);
@@ -189,8 +211,8 @@ namespace librarymanager
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.typeBox);
-            this.Controls.Add(this.type);
+            this.Controls.Add(this.authorBox);
+            this.Controls.Add(this.author);
             this.Controls.Add(this.numberBox);
             this.Controls.Add(this.number);
             this.Controls.Add(this.nameBox);
@@ -209,8 +231,8 @@ namespace librarymanager
         private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.TextBox numberBox;
         private System.Windows.Forms.Label number;
-        private System.Windows.Forms.TextBox typeBox;
-        private System.Windows.Forms.Label type;
+        private System.Windows.Forms.TextBox authorBox;
+        private System.Windows.Forms.Label author;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
@@ -220,5 +242,7 @@ namespace librarymanager
         private System.Windows.Forms.Button modifyButton;
         private System.Windows.Forms.TextBox levelBox;
         private System.Windows.Forms.Label level;
+        private System.Windows.Forms.TextBox typeBox;
+        private System.Windows.Forms.Label type;
     }
 }
