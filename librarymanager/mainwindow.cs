@@ -22,6 +22,7 @@ namespace librarymanager
             if (authority == 2)
             {
                 this.addBookButton.Enabled = false;
+                this.deleteButton.Enabled = false;
             }
             //初始化列表
             this.listView.Columns.Clear();
@@ -163,6 +164,58 @@ namespace librarymanager
             //lv.SubItems.Add(rdr[4].ToString());
             //一定记得行数据创建完毕后添加到列表中
             listView.Items.Add(lv);
+        }
+
+        private void addBookButton_Click(object sender, EventArgs e)
+        {
+            addaction add = new addaction();
+            add.Show();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if(IsNumber(deleteBox.Text)==true)
+            {
+                Sqldatabase Msqldatabase = new Sqldatabase();
+                Msqldatabase.Setdatabase();
+                try
+                {
+                    Msqldatabase.deletedata(deleteBox.Text);
+                    MessageBox.Show("删除成功!");
+                }
+                catch
+                {
+                    MessageBox.Show("删除失败!");
+                }
+                Msqldatabase.Closedatabase();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("请输入编号！");
+                deleteBox.Clear();
+            }
+        }
+
+        private void deleteBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        public  bool IsNumber(string str)
+        {
+            if (str == null || str.Length == 0)    //验证这个参数是否为空
+                return false;                           //是，就返回False
+            ASCIIEncoding ascii = new ASCIIEncoding();//new ASCIIEncoding 的实例
+            byte[] bytestr = ascii.GetBytes(str);         //把string类型的参数保存到数组里
+
+            foreach (byte c in bytestr)                   //遍历这个数组里的内容
+            {
+                if (c < 48 || c > 57)                          //判断是否为数字
+                {
+                    return false;                              //不是，就返回False
+                }
+            }
+            return true;                                        //是，就返回True
         }
     }
 }

@@ -146,6 +146,48 @@ namespace sqlconnection
             }
 
         }
+        public int bookadd(string id,string name,string author,string level,string publisher,string ISBN,string page)//添加图书
+        {
+            rdr=numbersearch(id);
+            if (rdr.Read()) { rdr.Close(); return 1; }
+            rdr.Close();
+            string sql = "INSERT INTO book ( id,name,auther,level,publisher,ISBN,page )VALUES( "+id+", \"" + name + "\", \"" + author + "\", \"" + level + "\",\"" +publisher+ "\",\""+ISBN+ "\","+page +")";
+            cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            sql = "INSERT INTO id_name (id,name) values ("+ id +",\""+name+"\")";
+            cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("添加成功！");
+            return 0;
+        }
+        public int CDadd(string id, string name, string author, string level, string publisher, string year, string time)//添加视频光盘
+        {
+            rdr = numbersearch(id);
+            if (rdr.Read()) { rdr.Close(); return 1; }
+            rdr.Close();
+            string sql = "INSERT INTO book ( id,name,author,level,publisher,ISBN,page )VALUES( " + id + ", \"" + name + "\", \"" + author + "\", \"" + level + "\",\"" + publisher + "\",\"" + year+ "\",\"" + time + "\")";
+            cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            sql = "INSERT INTO id_name (id,name) values (" + id + ",\"" + name + "\")";
+            cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("添加成功！");
+            return 0;
+        }
+        public int artadd(string id, string name, string author, string level, string country, string size)//添加图画类
+        {
+            rdr = numbersearch(id);
+            if (rdr.Read()) { rdr.Close(); return 1; }
+            rdr.Close();
+            string sql = "INSERT INTO book ( id,name,author,level,publisher,ISBN,page )VALUES( " + id + ", \"" + name + "\", \"" + author + "\", \"" + level + "\",\"" + country + "\",\"" + size + "\")";
+            cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            sql = "INSERT INTO id_name (id,name) values (" + id + ",\"" + name + "\")";
+            cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("添加成功！");
+            return 0;
+        }
         public void Signupuser(string username,string password,string number)//用户注册
         {
             try

@@ -34,6 +34,7 @@ namespace librarymanager
             this.图书数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.光盘数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.图画数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.导出数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutme = new System.Windows.Forms.ToolStripMenuItem();
             this.switchuser = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +51,8 @@ namespace librarymanager
             this.CDListButton = new System.Windows.Forms.Button();
             this.ArtListButton = new System.Windows.Forms.Button();
             this.DetailButton = new System.Windows.Forms.Button();
-            this.导出数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteBox = new System.Windows.Forms.TextBox();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,6 +97,12 @@ namespace librarymanager
             this.图画数据ToolStripMenuItem.Name = "图画数据ToolStripMenuItem";
             this.图画数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.图画数据ToolStripMenuItem.Text = "图画数据";
+            // 
+            // 导出数据ToolStripMenuItem
+            // 
+            this.导出数据ToolStripMenuItem.Name = "导出数据ToolStripMenuItem";
+            this.导出数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.导出数据ToolStripMenuItem.Text = "导出数据";
             // 
             // UserMenu
             // 
@@ -192,6 +200,7 @@ namespace librarymanager
             this.addBookButton.TabIndex = 12;
             this.addBookButton.Text = "添加";
             this.addBookButton.UseVisualStyleBackColor = true;
+            this.addBookButton.Click += new System.EventHandler(this.addBookButton_Click);
             // 
             // typeRButton
             // 
@@ -246,17 +255,31 @@ namespace librarymanager
             this.DetailButton.UseVisualStyleBackColor = true;
             this.DetailButton.Click += new System.EventHandler(this.DetailButton_Click);
             // 
-            // 导出数据ToolStripMenuItem
+            // deleteBox
             // 
-            this.导出数据ToolStripMenuItem.Name = "导出数据ToolStripMenuItem";
-            this.导出数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.导出数据ToolStripMenuItem.Text = "导出数据";
+            this.deleteBox.Location = new System.Drawing.Point(426, 480);
+            this.deleteBox.Name = "deleteBox";
+            this.deleteBox.Size = new System.Drawing.Size(174, 25);
+            this.deleteBox.TabIndex = 17;
+            this.deleteBox.TextChanged += new System.EventHandler(this.deleteBox_TextChanged);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(606, 480);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(81, 25);
+            this.deleteButton.TabIndex = 18;
+            this.deleteButton.Text = "删除";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // mainwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(717, 522);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.deleteBox);
             this.Controls.Add(this.DetailButton);
             this.Controls.Add(this.ArtListButton);
             this.Controls.Add(this.CDListButton);
@@ -303,5 +326,7 @@ namespace librarymanager
         private System.Windows.Forms.ToolStripMenuItem 光盘数据ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 图画数据ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 导出数据ToolStripMenuItem;
+        private System.Windows.Forms.TextBox deleteBox;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
