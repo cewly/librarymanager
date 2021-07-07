@@ -188,6 +188,18 @@ namespace sqlconnection
             MessageBox.Show("添加成功！");
             return 0;
         }
+
+        public int searchtotal(string table)
+        {
+            string number;
+            string sql = "SELECT count(*) from "+table;
+            cmd = new MySqlCommand(sql, conn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            number = rdr[0].ToString();
+            rdr.Close();
+            return int.Parse(number); 
+        }
         public void Signupuser(string username,string password,string number)//用户注册
         {
             try

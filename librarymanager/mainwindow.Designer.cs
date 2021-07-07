@@ -53,6 +53,7 @@ namespace librarymanager
             this.DetailButton = new System.Windows.Forms.Button();
             this.deleteBox = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.totalButton = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,25 +84,25 @@ namespace librarymanager
             // 图书数据ToolStripMenuItem
             // 
             this.图书数据ToolStripMenuItem.Name = "图书数据ToolStripMenuItem";
-            this.图书数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.图书数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.图书数据ToolStripMenuItem.Text = "图书数据";
             // 
             // 光盘数据ToolStripMenuItem
             // 
             this.光盘数据ToolStripMenuItem.Name = "光盘数据ToolStripMenuItem";
-            this.光盘数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.光盘数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.光盘数据ToolStripMenuItem.Text = "光盘数据";
             // 
             // 图画数据ToolStripMenuItem
             // 
             this.图画数据ToolStripMenuItem.Name = "图画数据ToolStripMenuItem";
-            this.图画数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.图画数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.图画数据ToolStripMenuItem.Text = "图画数据";
             // 
             // 导出数据ToolStripMenuItem
             // 
             this.导出数据ToolStripMenuItem.Name = "导出数据ToolStripMenuItem";
-            this.导出数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.导出数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.导出数据ToolStripMenuItem.Text = "导出数据";
             // 
             // UserMenu
@@ -112,17 +113,18 @@ namespace librarymanager
             this.UserMenu.Name = "UserMenu";
             this.UserMenu.Size = new System.Drawing.Size(53, 24);
             this.UserMenu.Text = "用户";
+            this.UserMenu.Click += new System.EventHandler(this.UserMenu_Click);
             // 
             // aboutme
             // 
             this.aboutme.Name = "aboutme";
-            this.aboutme.Size = new System.Drawing.Size(152, 26);
+            this.aboutme.Size = new System.Drawing.Size(224, 26);
             this.aboutme.Text = "个人信息";
             // 
             // switchuser
             // 
             this.switchuser.Name = "switchuser";
-            this.switchuser.Size = new System.Drawing.Size(152, 26);
+            this.switchuser.Size = new System.Drawing.Size(224, 26);
             this.switchuser.Text = "切换用户";
             this.switchuser.Click += new System.EventHandler(this.switchuser_Click);
             // 
@@ -137,7 +139,7 @@ namespace librarymanager
             // aboutappMenu
             // 
             this.aboutappMenu.Name = "aboutappMenu";
-            this.aboutappMenu.Size = new System.Drawing.Size(164, 26);
+            this.aboutappMenu.Size = new System.Drawing.Size(224, 26);
             this.aboutappMenu.Text = "关于应用...";
             this.aboutappMenu.Click += new System.EventHandler(this.aboutappMenu_Click);
             // 
@@ -273,11 +275,23 @@ namespace librarymanager
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // totalButton
+            // 
+            this.totalButton.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.totalButton.Location = new System.Drawing.Point(289, 474);
+            this.totalButton.Name = "totalButton";
+            this.totalButton.Size = new System.Drawing.Size(95, 30);
+            this.totalButton.TabIndex = 19;
+            this.totalButton.Text = "统计";
+            this.totalButton.UseVisualStyleBackColor = true;
+            this.totalButton.Click += new System.EventHandler(this.totalButton_Click);
+            // 
             // mainwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(717, 522);
+            this.Controls.Add(this.totalButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.deleteBox);
             this.Controls.Add(this.DetailButton);
@@ -328,5 +342,6 @@ namespace librarymanager
         private System.Windows.Forms.ToolStripMenuItem 导出数据ToolStripMenuItem;
         private System.Windows.Forms.TextBox deleteBox;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button totalButton;
     }
 }

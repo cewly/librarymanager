@@ -15,25 +15,33 @@ namespace librarymanager
 {
     public partial class addaction : Form
     {
-        public addaction()
+        private int leftbook;
+        private int leftart;
+        private int leftCD;
+        public addaction(int book,int CD,int art)
         {
             InitializeComponent();
+            leftbook = book;
+            leftCD = CD;
+            leftart = art;
         }
 
         private void bookRButton_CheckedChanged(object sender, EventArgs e)
         {
             setbook();
-
+            if (leftbook == 0) { button1.Enabled = false; MessageBox.Show("图书库已满!"); }
         }
 
         private void CDRButton_CheckedChanged(object sender, EventArgs e)
         {
             setCD();
+            if (leftbook == 0) { button1.Enabled = false; MessageBox.Show("视频光盘库已满!"); }
         }
 
         private void artRButton_CheckedChanged(object sender, EventArgs e)
         {
             setart();
+            if (leftbook == 0) { button1.Enabled = false; MessageBox.Show("图画库已满!"); }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,6 +73,7 @@ namespace librarymanager
         }
         public void setbook()
         {
+            button1.Enabled = true;
             label3.Show();
             textBox3.Show();
             label1.Text = "出版社:";
@@ -73,6 +82,7 @@ namespace librarymanager
         }
         public void setCD()
         {
+            button1.Enabled = true;
             label3.Show();
             textBox3.Show();
             label1.Text = "出品者:";
@@ -81,6 +91,7 @@ namespace librarymanager
         }
         public void setart()
         {
+            button1.Enabled = true;
             label1.Text = "出品国籍:";
             label2.Text = "长和宽:";
             label3.Hide();

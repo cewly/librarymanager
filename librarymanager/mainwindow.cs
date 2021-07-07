@@ -168,32 +168,56 @@ namespace librarymanager
 
         private void addBookButton_Click(object sender, EventArgs e)
         {
-            addaction add = new addaction();
-            add.Show();
+            Mupdata();
+            if (total == MAXTOTAL)
+            {
+                MessageBox.Show("数据库已满!");
+            }
+            else
+            {
+                addaction add = new addaction(MAXBOOK - book, MAXCD - CD,MAXART-art) ;
+                add.Show();
+            }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            if(IsNumber(deleteBox.Text)==true)
+            Mupdata();
+            if (total == 0)
             {
-                Sqldatabase Msqldatabase = new Sqldatabase();
-                Msqldatabase.Setdatabase();
-                try
-                {
-                    Msqldatabase.deletedata(deleteBox.Text);
-                    MessageBox.Show("删除成功!");
-                }
-                catch
-                {
-                    MessageBox.Show("删除失败!");
-                }
-                Msqldatabase.Closedatabase();
-                this.Close();
+                MessageBox.Show("数据库为空!");
             }
             else
             {
-                MessageBox.Show("请输入编号！");
-                deleteBox.Clear();
+                if (IsNumber(deleteBox.Text) == true)
+                {
+                    Sqldatabase Msqldatabase = new Sqldatabase();
+                    Msqldatabase.Setdatabase();
+                    rdr = Msqldatabase.numbersearch(deleteBox.Text);
+                    if (rdr.Read())
+                    {
+                        try
+                        {
+                            Msqldatabase.deletedata(deleteBox.Text);
+                            MessageBox.Show("删除成功!");
+                        }
+                        catch
+                        {
+                            MessageBox.Show("删除失败!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("该编号不存在!");
+                    }
+                    Msqldatabase.Closedatabase();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("请输入编号！");
+                    deleteBox.Clear();
+                }
             }
         }
 
@@ -216,6 +240,35 @@ namespace librarymanager
                 }
             }
             return true;                                        //是，就返回True
+        }
+
+        private void totalButton_Click(object sender, EventArgs e)
+        {
+            Mupdata();
+            MessageBox.Show("图书: "+book+"/"+MAXBOOK+"\n光盘: " + CD + "/" + MAXCD + "\n图画: " + art + "/" + MAXART + "\n总库存: " + total + "/" + MAXTOTAL);
+        }
+        public void Mupdata()
+        {
+            Sqldatabase Msqldatabase = new Sqldatabase();
+            Msqldatabase.Setdatabase();
+            book = Msqldatabase.searchtotal("book");
+            art = Msqldatabase.searchtotal("art");
+            CD = Msqldatabase.searchtotal("CD");
+            total = book + art + CD;
+            Msqldatabase.Closedatabase();
+        }
+        private int book;
+        private int art;
+        private int CD;
+        private int total;
+        private const int MAXTOTAL = 9;
+        private const int MAXCD = 3;
+        private const int MAXART = 3;
+        private const int MAXBOOK = 3;
+
+        private void UserMenu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
