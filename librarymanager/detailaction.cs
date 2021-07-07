@@ -29,9 +29,9 @@ namespace librarymanager
                 numberBox.Text = rdr[0].ToString();
                 authorBox.Text = rdr[2].ToString();
                 levelBox.Text = rdr[3].ToString();
-                borrowBox.Text = rdr[6].ToString();
-                textBox1.Text = rdr[4].ToString();
-                textBox2.Text = rdr[5].ToString();
+                borrowBox.Text = rdr[4].ToString();
+                textBox1.Text = rdr[5].ToString();
+                textBox2.Text = rdr[6].ToString();
                 setart();
             }
             else
@@ -53,10 +53,10 @@ namespace librarymanager
                     nameBox.Text = rdr[1].ToString();
                     numberBox.Text = rdr[0].ToString();
                     authorBox.Text = rdr[2].ToString();
-                    levelBox.Text = rdr[7].ToString();
-                    borrowBox.Text = rdr[6].ToString();
-                    textBox1.Text = rdr[3].ToString();
-                    textBox2.Text = rdr[4].ToString();
+                    levelBox.Text = rdr[3].ToString();
+                    borrowBox.Text = rdr[4].ToString();
+                    textBox1.Text = rdr[5].ToString();
+                    textBox2.Text = rdr[6].ToString();
                     textBox3.Text = rdr[5].ToString();
                     setbook();
                 }
@@ -76,7 +76,8 @@ namespace librarymanager
             textBox1.ReadOnly = true;
             textBox2.ReadOnly = true;
             textBox3.ReadOnly = true;
-
+            borrow.Hide();
+            borrowBox.Hide();
         }
             public void setbook()
         {
@@ -102,10 +103,6 @@ namespace librarymanager
 
         }
 
-        private void modifyButton_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
@@ -122,6 +119,11 @@ namespace librarymanager
             }
             Msqldatabase.Closedatabase();
             this.Close();
+        }
+
+        private void modifyButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

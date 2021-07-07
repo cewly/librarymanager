@@ -53,6 +53,7 @@ namespace sqlconnection
 
         public MySqlDataReader numbersearch(string number)//根据编号查找数据
         {
+            //Console.WriteLine(number);
             if (int.Parse(number) >= 30000)
             {
                 string sql = "SELECT * from art where id = "+number;
@@ -79,11 +80,31 @@ namespace sqlconnection
             }
         }
 
-        public void deletedata(string number)
+        public MySqlDataReader namesearch(string name)//根据标题查询
         {
+            string sql = "SELECT id from id_name where name = \"" + name+"\"";
+            cmd = new MySqlCommand(sql, conn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            string number = rdr[0].ToString();
+            rdr.Close();
+            rdr = numbersearch(number);
+            return rdr;
+        }
+
+        public MySqlDataReader typesearch(string type)//根据类型查询
+        {
+            if (type == "图书") { rdr = Listbook(); }
+            if (type == "图画") { rdr = Listart(); }
+            if (type == "视频光盘") { rdr = ListCD(); }
+            return rdr;
+        }
+        public void deletedata(string number)//数据删除操作
+        {
+            string sql;
             if (int.Parse(number) >= 30000)
             {
-                string sql = "DELETE FROM art WHERE id ="+number;
+                sql = "DELETE FROM art WHERE id ="+number;
                 cmd = new MySqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
             }
@@ -91,17 +112,20 @@ namespace sqlconnection
             {
                 if (int.Parse(number) >= 20000)
                 {
-                    string sql = "DELETE FROM cd WHERE id =" + number;
+                    sql = "DELETE FROM cd WHERE id =" + number;
                     cmd = new MySqlCommand(sql, conn);
                     cmd.ExecuteNonQuery();
                 }
                 else
                 {
-                    string sql = "DELETE FROM book WHERE id =" + number;
+                    sql = "DELETE FROM book WHERE id =" + number;
                     cmd = new MySqlCommand(sql, conn);
                     cmd.ExecuteNonQuery();
                 }
             }
+            sql = "DELETE FROM id_name WHERE id =" + number;
+            cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
         }
         public int Checkuser(string name,string password)//登录操作
         {

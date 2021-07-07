@@ -22,5 +22,10 @@ namespace librarymanager
               address.LinkVisited = true;
             System.Diagnostics.Process.Start("iexplore.exe", "https://github.com/cewly/librarymanager");
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

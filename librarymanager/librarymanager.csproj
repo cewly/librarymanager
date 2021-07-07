@@ -63,6 +63,12 @@
     <Compile Include="aboutapp.Designer.cs">
       <DependentUpon>aboutapp.cs</DependentUpon>
     </Compile>
+    <Compile Include="addaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addaction.Designer.cs">
+      <DependentUpon>addaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="mainwindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="aboutapp.resx">
       <DependentUpon>aboutapp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addaction.resx">
+      <DependentUpon>addaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loginaction.resx">
       <DependentUpon>loginaction.cs</DependentUpon>

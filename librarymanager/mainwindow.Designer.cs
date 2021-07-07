@@ -34,7 +34,6 @@ namespace librarymanager
             this.图书数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.光盘数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.图画数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.导入用户数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutme = new System.Windows.Forms.ToolStripMenuItem();
             this.switchuser = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,17 +42,15 @@ namespace librarymanager
             this.numberRButton = new System.Windows.Forms.RadioButton();
             this.titalRButton = new System.Windows.Forms.RadioButton();
             this.BookListButton = new System.Windows.Forms.Button();
-            this.UserListButton = new System.Windows.Forms.Button();
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
-            this.BorrowButton = new System.Windows.Forms.Button();
-            this.ReturnButton = new System.Windows.Forms.Button();
             this.addBookButton = new System.Windows.Forms.Button();
             this.typeRButton = new System.Windows.Forms.RadioButton();
             this.listView = new System.Windows.Forms.ListView();
             this.CDListButton = new System.Windows.Forms.Button();
             this.ArtListButton = new System.Windows.Forms.Button();
             this.DetailButton = new System.Windows.Forms.Button();
+            this.导出数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,10 +73,10 @@ namespace librarymanager
             this.图书数据ToolStripMenuItem,
             this.光盘数据ToolStripMenuItem,
             this.图画数据ToolStripMenuItem,
-            this.导入用户数据ToolStripMenuItem});
+            this.导出数据ToolStripMenuItem});
             this.导入ToolStripMenuItem.Name = "导入ToolStripMenuItem";
-            this.导入ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
-            this.导入ToolStripMenuItem.Text = "导入";
+            this.导入ToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.导入ToolStripMenuItem.Text = "导入/出";
             // 
             // 图书数据ToolStripMenuItem
             // 
@@ -98,12 +95,6 @@ namespace librarymanager
             this.图画数据ToolStripMenuItem.Name = "图画数据ToolStripMenuItem";
             this.图画数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.图画数据ToolStripMenuItem.Text = "图画数据";
-            // 
-            // 导入用户数据ToolStripMenuItem
-            // 
-            this.导入用户数据ToolStripMenuItem.Name = "导入用户数据ToolStripMenuItem";
-            this.导入用户数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
-            this.导入用户数据ToolStripMenuItem.Text = "用户数据";
             // 
             // UserMenu
             // 
@@ -175,16 +166,6 @@ namespace librarymanager
             this.BookListButton.UseVisualStyleBackColor = true;
             this.BookListButton.Click += new System.EventHandler(this.BookListButton_Click);
             // 
-            // UserListButton
-            // 
-            this.UserListButton.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.UserListButton.Location = new System.Drawing.Point(353, 32);
-            this.UserListButton.Name = "UserListButton";
-            this.UserListButton.Size = new System.Drawing.Size(95, 30);
-            this.UserListButton.TabIndex = 5;
-            this.UserListButton.Text = "用户列表";
-            this.UserListButton.UseVisualStyleBackColor = true;
-            // 
             // SearchBox
             // 
             this.SearchBox.Location = new System.Drawing.Point(202, 74);
@@ -200,31 +181,12 @@ namespace librarymanager
             this.SearchButton.TabIndex = 7;
             this.SearchButton.Text = "搜索";
             this.SearchButton.UseVisualStyleBackColor = true;
-            // 
-            // BorrowButton
-            // 
-            this.BorrowButton.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BorrowButton.Location = new System.Drawing.Point(12, 474);
-            this.BorrowButton.Name = "BorrowButton";
-            this.BorrowButton.Size = new System.Drawing.Size(95, 30);
-            this.BorrowButton.TabIndex = 9;
-            this.BorrowButton.Text = "借书";
-            this.BorrowButton.UseVisualStyleBackColor = true;
-            // 
-            // ReturnButton
-            // 
-            this.ReturnButton.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ReturnButton.Location = new System.Drawing.Point(124, 474);
-            this.ReturnButton.Name = "ReturnButton";
-            this.ReturnButton.Size = new System.Drawing.Size(95, 30);
-            this.ReturnButton.TabIndex = 10;
-            this.ReturnButton.Text = "还书";
-            this.ReturnButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // addBookButton
             // 
             this.addBookButton.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.addBookButton.Location = new System.Drawing.Point(363, 473);
+            this.addBookButton.Location = new System.Drawing.Point(161, 474);
             this.addBookButton.Name = "addBookButton";
             this.addBookButton.Size = new System.Drawing.Size(95, 30);
             this.addBookButton.TabIndex = 12;
@@ -276,13 +238,19 @@ namespace librarymanager
             // DetailButton
             // 
             this.DetailButton.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DetailButton.Location = new System.Drawing.Point(241, 473);
+            this.DetailButton.Location = new System.Drawing.Point(39, 474);
             this.DetailButton.Name = "DetailButton";
             this.DetailButton.Size = new System.Drawing.Size(95, 30);
             this.DetailButton.TabIndex = 16;
             this.DetailButton.Text = "详情";
             this.DetailButton.UseVisualStyleBackColor = true;
             this.DetailButton.Click += new System.EventHandler(this.DetailButton_Click);
+            // 
+            // 导出数据ToolStripMenuItem
+            // 
+            this.导出数据ToolStripMenuItem.Name = "导出数据ToolStripMenuItem";
+            this.导出数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.导出数据ToolStripMenuItem.Text = "导出数据";
             // 
             // mainwindow
             // 
@@ -294,12 +262,9 @@ namespace librarymanager
             this.Controls.Add(this.CDListButton);
             this.Controls.Add(this.typeRButton);
             this.Controls.Add(this.addBookButton);
-            this.Controls.Add(this.ReturnButton);
-            this.Controls.Add(this.BorrowButton);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.SearchBox);
-            this.Controls.Add(this.UserListButton);
             this.Controls.Add(this.BookListButton);
             this.Controls.Add(this.titalRButton);
             this.Controls.Add(this.numberRButton);
@@ -325,15 +290,11 @@ namespace librarymanager
         private System.Windows.Forms.RadioButton numberRButton;
         private System.Windows.Forms.RadioButton titalRButton;
         private System.Windows.Forms.Button BookListButton;
-        private System.Windows.Forms.Button UserListButton;
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.Button SearchButton;
-        private System.Windows.Forms.Button BorrowButton;
-        private System.Windows.Forms.Button ReturnButton;
         private System.Windows.Forms.Button addBookButton;
         private System.Windows.Forms.RadioButton typeRButton;
         private System.Windows.Forms.ToolStripMenuItem 导入ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 导入用户数据ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 图书数据ToolStripMenuItem;
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.Button CDListButton;
@@ -341,5 +302,6 @@ namespace librarymanager
         private System.Windows.Forms.Button DetailButton;
         private System.Windows.Forms.ToolStripMenuItem 光盘数据ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 图画数据ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 导出数据ToolStripMenuItem;
     }
 }

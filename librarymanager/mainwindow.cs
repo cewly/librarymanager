@@ -14,6 +14,7 @@ namespace librarymanager
 {
     public partial class mainwindow : Form
     {
+        private MySqlDataReader rdr;
         public mainwindow(int power)
         {
             InitializeComponent();
@@ -22,33 +23,26 @@ namespace librarymanager
             {
                 this.addBookButton.Enabled = false;
             }
-        }
-
-        private void BookListButton_Click(object sender, EventArgs e)
-        {
-            //初始化图书列表
+            //初始化列表
             this.listView.Columns.Clear();
             this.listView.Columns.Add("标题", 200, HorizontalAlignment.Center);
             this.listView.Columns.Add("编号", 80, HorizontalAlignment.Center);
             this.listView.Columns.Add("作者", 80, HorizontalAlignment.Center);
             this.listView.Columns.Add("评级", 80, HorizontalAlignment.Center);
-            this.listView.Columns.Add("借阅情况", 100, HorizontalAlignment.Center);
+           //this.listView.Columns.Add("借阅情况", 100, HorizontalAlignment.Center);
+            this.listView.Items.Clear();
+        }
+
+        private void BookListButton_Click(object sender, EventArgs e)
+        {
             this.listView.Items.Clear();
             //导入数据库数据;
             Sqldatabase Msqldatabase = new Sqldatabase();
             Msqldatabase.Setdatabase();
-            MySqlDataReader rdr = Msqldatabase.Listbook();
+            rdr = Msqldatabase.Listbook();
             while (rdr.Read())
             {
-                ListViewItem lv = new ListViewItem();
-                lv.Text = rdr[1].ToString();//设置第一行显示的数据
-                //绑定剩余列的数据
-                lv.SubItems.Add(rdr[0].ToString());
-                lv.SubItems.Add(rdr[2].ToString());
-                lv.SubItems.Add(rdr[7].ToString());
-                lv.SubItems.Add(rdr[6].ToString());
-                //一定记得行数据创建完毕后添加到列表中
-                listView.Items.Add(lv);
+                printtoscreen();
             }
             rdr.Close();
             Msqldatabase.Closedatabase();
@@ -56,29 +50,14 @@ namespace librarymanager
 
         private void CDListButton_Click(object sender, EventArgs e)
         {
-            //初始化光盘列表
-            this.listView.Columns.Clear();
-            this.listView.Columns.Add("标题", 200, HorizontalAlignment.Center);
-            this.listView.Columns.Add("编号", 80, HorizontalAlignment.Center);
-            this.listView.Columns.Add("作者", 80, HorizontalAlignment.Center);
-            this.listView.Columns.Add("评级", 80, HorizontalAlignment.Center);
-            this.listView.Columns.Add("借阅情况", 100, HorizontalAlignment.Center);
             this.listView.Items.Clear();
             //导入数据库数据;
             Sqldatabase Msqldatabase = new Sqldatabase();
             Msqldatabase.Setdatabase();
-            MySqlDataReader rdr = Msqldatabase.ListCD();
+            rdr = Msqldatabase.ListCD();
             while (rdr.Read())
             {
-                ListViewItem lv = new ListViewItem();
-                lv.Text = rdr[1].ToString();//设置第一行显示的数据
-                //绑定剩余列的数据
-                lv.SubItems.Add(rdr[0].ToString());
-                lv.SubItems.Add(rdr[2].ToString());
-                lv.SubItems.Add(rdr[3].ToString());
-                lv.SubItems.Add(rdr[4].ToString());
-                //一定记得行数据创建完毕后添加到列表中
-                listView.Items.Add(lv);
+                printtoscreen();
             }
             rdr.Close();
             Msqldatabase.Closedatabase();
@@ -86,29 +65,14 @@ namespace librarymanager
 
         private void ArtListButton_Click(object sender, EventArgs e)
         {
-            //初始化光盘列表
-            this.listView.Columns.Clear();
-            this.listView.Columns.Add("标题", 200, HorizontalAlignment.Center);
-            this.listView.Columns.Add("编号", 80, HorizontalAlignment.Center);
-            this.listView.Columns.Add("作者", 80, HorizontalAlignment.Center);
-            this.listView.Columns.Add("评级", 80, HorizontalAlignment.Center);
-            this.listView.Columns.Add("借阅情况", 100, HorizontalAlignment.Center);
             this.listView.Items.Clear();
             //导入数据库数据;
             Sqldatabase Msqldatabase = new Sqldatabase();
             Msqldatabase.Setdatabase();
-            MySqlDataReader rdr = Msqldatabase.Listart();
+            rdr = Msqldatabase.Listart();
             while (rdr.Read())
             {
-                ListViewItem lv = new ListViewItem();
-                lv.Text = rdr[1].ToString();//设置第一行显示的数据
-                //绑定剩余列的数据
-                lv.SubItems.Add(rdr[0].ToString());
-                lv.SubItems.Add(rdr[2].ToString());
-                lv.SubItems.Add(rdr[3].ToString());
-                lv.SubItems.Add(rdr[4].ToString());
-                //一定记得行数据创建完毕后添加到列表中
-                listView.Items.Add(lv);
+                printtoscreen();
             }
             rdr.Close();
             Msqldatabase.Closedatabase();
@@ -136,5 +100,69 @@ namespace librarymanager
         }
 
         public int authority;
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            bool bz = false;
+            if (numberRButton.Checked == true)
+            {
+                Sqldatabase Msqldatabase = new Sqldatabase();
+                Msqldatabase.Setdatabase();
+                rdr = Msqldatabase.numbersearch(SearchBox.Text);
+                this.listView.Items.Clear();
+                while (rdr.Read())
+                {
+                    printtoscreen();
+                    bz = true;
+                }
+                rdr.Close();
+                Msqldatabase.Closedatabase();
+                if (!bz) { MessageBox.Show("该编号不存在！"); }
+            }
+            if (titalRButton.Checked == true)
+            {
+                Sqldatabase Msqldatabase = new Sqldatabase();
+                Msqldatabase.Setdatabase();
+                rdr = Msqldatabase.namesearch(SearchBox.Text);
+                this.listView.Items.Clear();
+                while (rdr.Read())
+                {
+                    printtoscreen();
+                    bz = true;
+                }
+                rdr.Close();
+                Msqldatabase.Closedatabase();
+                if (!bz) { MessageBox.Show("该标题不存在！"); }
+            }
+            if (typeRButton.Checked == true)
+            {if (SearchBox.Text == "图书" || SearchBox.Text == "图画" || SearchBox.Text == "视频光盘")
+                {
+                    Sqldatabase Msqldatabase = new Sqldatabase();
+                    Msqldatabase.Setdatabase();
+                    rdr = Msqldatabase.typesearch(SearchBox.Text);
+                    this.listView.Items.Clear();
+                    while (rdr.Read())
+                    {
+                        printtoscreen();
+                        bz = true;
+                    }
+                    rdr.Close();
+                    Msqldatabase.Closedatabase();
+                }
+                if (!bz) { MessageBox.Show("该类别没有物品！"); }
+            }
+        }
+        public void printtoscreen()
+        {
+            ListViewItem lv = new ListViewItem();
+            lv.Text = rdr[1].ToString();//设置第一行显示的数据
+                                        //绑定剩余列的数据
+            lv.SubItems.Add(rdr[0].ToString());
+            lv.SubItems.Add(rdr[2].ToString());
+            lv.SubItems.Add(rdr[3].ToString());
+            //lv.SubItems.Add(rdr[4].ToString());
+            //一定记得行数据创建完毕后添加到列表中
+            listView.Items.Add(lv);
+        }
     }
 }

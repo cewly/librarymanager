@@ -39,16 +39,17 @@ namespace librarymanager
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(46, 43);
+            this.label1.Location = new System.Drawing.Point(81, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "媒体库管理系统";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // address
             // 
             this.address.AutoSize = true;
-            this.address.Location = new System.Drawing.Point(60, 139);
+            this.address.Location = new System.Drawing.Point(95, 175);
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(115, 15);
             this.address.TabIndex = 1;
@@ -59,7 +60,7 @@ namespace librarymanager
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(76, 75);
+            this.label2.Location = new System.Drawing.Point(111, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 15);
             this.label2.TabIndex = 2;
@@ -68,7 +69,7 @@ namespace librarymanager
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 98);
+            this.label3.Location = new System.Drawing.Point(82, 125);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(142, 15);
             this.label3.TabIndex = 3;
@@ -78,7 +79,7 @@ namespace librarymanager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(258, 207);
+            this.ClientSize = new System.Drawing.Size(316, 280);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.address);
