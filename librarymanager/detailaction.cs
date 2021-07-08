@@ -14,6 +14,7 @@ namespace librarymanager
 {
     public partial class detailaction : Form
     {
+        private int id;
         public detailaction(string number, int authority)
         {
             InitializeComponent();
@@ -63,19 +64,21 @@ namespace librarymanager
             }
             rdr.Close();
             Msqldatabase.Closedatabase();
+            id = int.Parse(numberBox.Text);
             if (authority == 2)//限制用户修改权限
             {
                 deleteButton.Enabled = false;
                 modifyButton.Enabled = false;
+                nameBox.ReadOnly = true;
+                numberBox.ReadOnly = true;
+                levelBox.ReadOnly = true;
+                authorBox.ReadOnly = true;
+                borrowBox.ReadOnly = true;
+                textBox1.ReadOnly = true;
+                textBox2.ReadOnly = true;
+                textBox3.ReadOnly = true;
             }
-            nameBox.ReadOnly = true;
-            numberBox.ReadOnly = true;
-            levelBox.ReadOnly = true;
-            authorBox.ReadOnly = true;
-            borrowBox.ReadOnly = true;
-            textBox1.ReadOnly = true;
-            textBox2.ReadOnly = true;
-            textBox3.ReadOnly = true;
+           
             borrow.Hide();
             borrowBox.Hide();
         }
@@ -123,7 +126,30 @@ namespace librarymanager
 
         private void modifyButton_Click(object sender, EventArgs e)
         {
-
+            if (id<20000)
+            {
+                Sqldatabase Msqldatabase = new Sqldatabase();
+                Msqldatabase.Setdatabase();
+                if (int.Parse(numberBox.Text) < 10000 || int.Parse(numberBox.Text) >= 20000 || Msqldatabase.bookadd(numberBox.Text, nameBox.Text, authorBox.Text, levelBox.Text, textBox1.Text, textBox2.Text, textBox3.Text) == 1 ) { MessageBox.Show("该编码已存在或不合法！"); }
+                Msqldatabase.Closedatabase();
+                this.Close();
+            }
+            if (id>=30000)
+            {
+                Sqldatabase Msqldatabase = new Sqldatabase();
+                Msqldatabase.Setdatabase();
+                if (int.Parse(numberBox.Text) >= 40000 || int.Parse(numberBox.Text) < 20000 || Msqldatabase.artadd(numberBox.Text, nameBox.Text, authorBox.Text, levelBox.Text, textBox1.Text, textBox2.Text) == 1 ) { MessageBox.Show("该编码已存在或不合法！"); }
+                Msqldatabase.Closedatabase();
+                this.Close();
+            }
+            if (id >=20000 && id <=30000)
+            {
+                Sqldatabase Msqldatabase = new Sqldatabase();
+                Msqldatabase.Setdatabase();
+                if (int.Parse(numberBox.Text) >= 30000 || int.Parse(numberBox.Text) < 20000 || Msqldatabase.CDadd( numberBox.Text, nameBox.Text, authorBox.Text, levelBox.Text, textBox1.Text, textBox2.Text, textBox3.Text) == 1) { MessageBox.Show("该编码已存在或不合法！"); }
+                Msqldatabase.Closedatabase();
+                this.Close();
+            }
         }
     }
 }

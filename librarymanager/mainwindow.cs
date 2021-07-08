@@ -23,6 +23,7 @@ namespace librarymanager
             {
                 this.addBookButton.Enabled = false;
                 this.deleteButton.Enabled = false;
+                this.deleteBox.ReadOnly = true;
             }
             //初始化列表
             this.listView.Columns.Clear();
@@ -246,6 +247,30 @@ namespace librarymanager
         {
             Mupdata();
             MessageBox.Show("图书: "+book+"/"+MAXBOOK+"\n光盘: " + CD + "/" + MAXCD + "\n图画: " + art + "/" + MAXART + "\n总库存: " + total + "/" + MAXTOTAL);
+            this.listView.Items.Clear();
+            //导入数据库数据;
+            Sqldatabase Msqldatabase = new Sqldatabase();
+            Msqldatabase.Setdatabase();
+            rdr = Msqldatabase.Listbook();
+            while (rdr.Read())
+            {
+                printtoscreen();
+            }
+            rdr.Close();
+            rdr = Msqldatabase.ListCD();
+            while (rdr.Read())
+            {
+                printtoscreen();
+            }
+            rdr.Close();
+            rdr = Msqldatabase.Listart();
+            while (rdr.Read())
+            {
+                printtoscreen();
+            }
+            rdr.Close();
+            Msqldatabase.Closedatabase();
+
         }
         public void Mupdata()
         {

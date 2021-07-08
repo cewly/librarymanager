@@ -46,29 +46,42 @@ namespace librarymanager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (bookRButton.Checked == true)
+            if (IsNumber(numberBox.Text) == true)
             {
-                Sqldatabase Msqldatabase = new Sqldatabase();
-                Msqldatabase.Setdatabase();
-                if (Msqldatabase.bookadd(numberBox.Text,nameBox.Text,authorBox.Text,levelBox.Text,textBox1.Text,textBox2.Text,textBox3.Text) == 1 ||int.Parse(numberBox.Text)>=20000) { MessageBox.Show("该编码已存在或不合法！"); }
-                Msqldatabase.Closedatabase();
-                this.Close();
+                if (bookRButton.Checked == true  )
+                {
+                    Sqldatabase Msqldatabase = new Sqldatabase();
+                    Msqldatabase.Setdatabase();
+                    if (int.Parse(numberBox.Text) < 10000 || int.Parse(numberBox.Text) >= 20000 || Msqldatabase.bookadd(numberBox.Text, nameBox.Text, authorBox.Text, levelBox.Text, textBox1.Text, textBox2.Text, textBox3.Text) == 1) { MessageBox.Show("该编码已存在或不合法！"); }
+                    Msqldatabase.Closedatabase();
+                    MessageBox.Show("添加成功！");
+
+                    this.Close();
+                }
+                if (artRButton.Checked == true)
+                {
+                    Sqldatabase Msqldatabase = new Sqldatabase();
+                    Msqldatabase.Setdatabase();
+                    if (int.Parse(numberBox.Text) >= 40000 || int.Parse(numberBox.Text) < 30000 || Msqldatabase.artadd(numberBox.Text, nameBox.Text, authorBox.Text, levelBox.Text, textBox1.Text, textBox2.Text) == 1) { MessageBox.Show("该编码已存在或不合法！"); }
+                    Msqldatabase.Closedatabase();
+                    MessageBox.Show("添加成功！");
+
+                    this.Close();
+                }
+                if (CDRButton.Checked == true)
+                {
+                    Sqldatabase Msqldatabase = new Sqldatabase();
+                    Msqldatabase.Setdatabase();
+                    if (int.Parse(numberBox.Text) >= 30000 || int.Parse(numberBox.Text) < 20000 || Msqldatabase.CDadd(numberBox.Text, nameBox.Text, authorBox.Text, levelBox.Text, textBox1.Text, textBox2.Text, textBox3.Text) == 1) { MessageBox.Show("该编码已存在或不合法！"); }
+                    Msqldatabase.Closedatabase();
+                    MessageBox.Show("添加成功！");
+
+                    this.Close();
+                }
             }
-            if (artRButton.Checked == true)
+            else
             {
-                Sqldatabase Msqldatabase = new Sqldatabase();
-                Msqldatabase.Setdatabase();
-                if (Msqldatabase.artadd(numberBox.Text, nameBox.Text, authorBox.Text, levelBox.Text, textBox1.Text, textBox2.Text) == 1 || int.Parse(numberBox.Text) >= 30000 || int.Parse(numberBox.Text) < 20000) { MessageBox.Show("该编码已存在或不合法！"); }
-                Msqldatabase.Closedatabase();
-                this.Close();
-            }
-            if (CDRButton.Checked == true)
-            {
-                 Sqldatabase Msqldatabase = new Sqldatabase();
-                 Msqldatabase.Setdatabase();
-                if (Msqldatabase.CDadd(numberBox.Text, nameBox.Text, authorBox.Text, levelBox.Text, textBox1.Text, textBox2.Text, textBox3.Text) == 1 || int.Parse(numberBox.Text) < 30000) { MessageBox.Show("该编码已存在或不合法！"); }
-                Msqldatabase.Closedatabase();
-                this.Close();
+                MessageBox.Show("该编码已存在或不合法！");
             }
         }
         public void setbook()
@@ -96,6 +109,22 @@ namespace librarymanager
             label2.Text = "长和宽:";
             label3.Hide();
             textBox3.Hide();
+        }
+        public bool IsNumber(string str)
+        {
+            if (str == null || str.Length == 0)    //验证这个参数是否为空
+                return false;                           //是，就返回False
+            ASCIIEncoding ascii = new ASCIIEncoding();//new ASCIIEncoding 的实例
+            byte[] bytestr = ascii.GetBytes(str);         //把string类型的参数保存到数组里
+
+            foreach (byte c in bytestr)                   //遍历这个数组里的内容
+            {
+                if (c < 48 || c > 57)                          //判断是否为数字
+                {
+                    return false;                              //不是，就返回False
+                }
+            }
+            return true;                                        //是，就返回True
         }
 
 
