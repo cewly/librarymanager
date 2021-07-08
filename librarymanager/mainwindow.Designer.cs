@@ -31,12 +31,9 @@ namespace librarymanager
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.图书数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.光盘数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.图画数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.导出数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadinmenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadoutmenu = new System.Windows.Forms.ToolStripMenuItem();
             this.UserMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutme = new System.Windows.Forms.ToolStripMenuItem();
             this.switchuser = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutappMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,58 +70,39 @@ namespace librarymanager
             // 导入ToolStripMenuItem
             // 
             this.导入ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.图书数据ToolStripMenuItem,
-            this.光盘数据ToolStripMenuItem,
-            this.图画数据ToolStripMenuItem,
-            this.导出数据ToolStripMenuItem});
+            this.loadinmenu,
+            this.loadoutmenu});
             this.导入ToolStripMenuItem.Name = "导入ToolStripMenuItem";
             this.导入ToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.导入ToolStripMenuItem.Text = "导入/出";
             // 
-            // 图书数据ToolStripMenuItem
+            // loadinmenu
             // 
-            this.图书数据ToolStripMenuItem.Name = "图书数据ToolStripMenuItem";
-            this.图书数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.图书数据ToolStripMenuItem.Text = "图书数据";
+            this.loadinmenu.Name = "loadinmenu";
+            this.loadinmenu.Size = new System.Drawing.Size(224, 26);
+            this.loadinmenu.Text = "导入数据";
+            this.loadinmenu.Click += new System.EventHandler(this.loadinmenu_Click);
             // 
-            // 光盘数据ToolStripMenuItem
+            // loadoutmenu
             // 
-            this.光盘数据ToolStripMenuItem.Name = "光盘数据ToolStripMenuItem";
-            this.光盘数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.光盘数据ToolStripMenuItem.Text = "光盘数据";
-            // 
-            // 图画数据ToolStripMenuItem
-            // 
-            this.图画数据ToolStripMenuItem.Name = "图画数据ToolStripMenuItem";
-            this.图画数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.图画数据ToolStripMenuItem.Text = "图画数据";
-            // 
-            // 导出数据ToolStripMenuItem
-            // 
-            this.导出数据ToolStripMenuItem.Name = "导出数据ToolStripMenuItem";
-            this.导出数据ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.导出数据ToolStripMenuItem.Text = "导出数据";
+            this.loadoutmenu.Name = "loadoutmenu";
+            this.loadoutmenu.Size = new System.Drawing.Size(224, 26);
+            this.loadoutmenu.Text = "导出数据";
+            this.loadoutmenu.Click += new System.EventHandler(this.loadoutmenu_Click);
             // 
             // UserMenu
             // 
             this.UserMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutme,
             this.switchuser});
             this.UserMenu.Name = "UserMenu";
             this.UserMenu.Size = new System.Drawing.Size(53, 24);
             this.UserMenu.Text = "用户";
             this.UserMenu.Click += new System.EventHandler(this.UserMenu_Click);
             // 
-            // aboutme
-            // 
-            this.aboutme.Name = "aboutme";
-            this.aboutme.Size = new System.Drawing.Size(224, 26);
-            this.aboutme.Text = "个人信息";
-            // 
             // switchuser
             // 
             this.switchuser.Name = "switchuser";
-            this.switchuser.Size = new System.Drawing.Size(224, 26);
+            this.switchuser.Size = new System.Drawing.Size(152, 26);
             this.switchuser.Text = "切换用户";
             this.switchuser.Click += new System.EventHandler(this.switchuser_Click);
             // 
@@ -139,7 +117,7 @@ namespace librarymanager
             // aboutappMenu
             // 
             this.aboutappMenu.Name = "aboutappMenu";
-            this.aboutappMenu.Size = new System.Drawing.Size(224, 26);
+            this.aboutappMenu.Size = new System.Drawing.Size(164, 26);
             this.aboutappMenu.Text = "关于应用...";
             this.aboutappMenu.Click += new System.EventHandler(this.aboutappMenu_Click);
             // 
@@ -320,7 +298,6 @@ namespace librarymanager
 
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem UserMenu;
-        private System.Windows.Forms.ToolStripMenuItem aboutme;
         private System.Windows.Forms.ToolStripMenuItem switchuser;
         private System.Windows.Forms.ToolStripMenuItem HelpMenu;
         private System.Windows.Forms.ToolStripMenuItem aboutappMenu;
@@ -332,14 +309,12 @@ namespace librarymanager
         private System.Windows.Forms.Button addBookButton;
         private System.Windows.Forms.RadioButton typeRButton;
         private System.Windows.Forms.ToolStripMenuItem 导入ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 图书数据ToolStripMenuItem;
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.Button CDListButton;
         private System.Windows.Forms.Button ArtListButton;
         private System.Windows.Forms.Button DetailButton;
-        private System.Windows.Forms.ToolStripMenuItem 光盘数据ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 图画数据ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 导出数据ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadinmenu;
+        private System.Windows.Forms.ToolStripMenuItem loadoutmenu;
         private System.Windows.Forms.TextBox deleteBox;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button totalButton;

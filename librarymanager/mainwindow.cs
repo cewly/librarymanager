@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using sqlconnection;
 using MySql.Data.MySqlClient;
+using Spire.Xls;
 
 namespace librarymanager
 {
@@ -294,6 +295,18 @@ namespace librarymanager
         private void UserMenu_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void loadinmenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadoutmenu_Click(object sender, EventArgs e)
+        {
+            excelaction excel = new excelaction();
+            excel.createxcel();
+            MessageBox.Show("导出成功！");
         }
     }
 }
