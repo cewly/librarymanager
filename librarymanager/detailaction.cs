@@ -131,6 +131,7 @@ namespace librarymanager
                 Sqldatabase Msqldatabase = new Sqldatabase();
                 Msqldatabase.Setdatabase();
                 if (int.Parse(numberBox.Text) < 10000 || int.Parse(numberBox.Text) >= 20000 || Msqldatabase.bookadd(numberBox.Text, nameBox.Text, authorBox.Text, levelBox.Text, textBox1.Text, textBox2.Text, textBox3.Text) == 1 ) { MessageBox.Show("该编码已存在或不合法！"); }
+                else { MessageBox.Show("修改成功!"); }
                 Msqldatabase.Closedatabase();
                 this.Close();
             }
@@ -139,6 +140,7 @@ namespace librarymanager
                 Sqldatabase Msqldatabase = new Sqldatabase();
                 Msqldatabase.Setdatabase();
                 if (int.Parse(numberBox.Text) >= 40000 || int.Parse(numberBox.Text) < 20000 || Msqldatabase.artadd(numberBox.Text, nameBox.Text, authorBox.Text, levelBox.Text, textBox1.Text, textBox2.Text) == 1 ) { MessageBox.Show("该编码已存在或不合法！"); }
+                else { MessageBox.Show("修改成功!"); }
                 Msqldatabase.Closedatabase();
                 this.Close();
             }
@@ -147,6 +149,7 @@ namespace librarymanager
                 Sqldatabase Msqldatabase = new Sqldatabase();
                 Msqldatabase.Setdatabase();
                 if (int.Parse(numberBox.Text) >= 30000 || int.Parse(numberBox.Text) < 20000 || Msqldatabase.CDadd( numberBox.Text, nameBox.Text, authorBox.Text, levelBox.Text, textBox1.Text, textBox2.Text, textBox3.Text) == 1) { MessageBox.Show("该编码已存在或不合法！"); }
+                else { MessageBox.Show("修改成功!"); }
                 Msqldatabase.Closedatabase();
                 this.Close();
             }

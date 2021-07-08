@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/导出数据.xls
+/导入数据1.xls
+/导入数据2.xls

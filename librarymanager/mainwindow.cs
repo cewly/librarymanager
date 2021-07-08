@@ -299,7 +299,17 @@ namespace librarymanager
 
         private void loadinmenu_Click(object sender, EventArgs e)
         {
-
+            Mupdata();
+            excelaction excel = new excelaction();
+            int bz= excel.readexcel(MAXBOOK - book, MAXCD - CD, MAXART - art);
+            if(bz==1)
+            {
+                MessageBox.Show("库存已满或存在重复编号！");
+            }
+            else
+            {
+                MessageBox.Show("导入成功！");
+            }
         }
 
         private void loadoutmenu_Click(object sender, EventArgs e)
