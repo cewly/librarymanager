@@ -148,10 +148,10 @@ namespace sqlconnection
         }
         public int bookadd(string id,string name,string author,string level,string publisher,string ISBN,string page)//添加图书
         {
-            rdr=numbersearch(id);
+            rdr = numbersearch(id);
             if (rdr.Read()) { rdr.Close(); return 1; }
             rdr.Close();
-            string sql = "INSERT INTO book ( id,name,auther,level,publisher,ISBN,page )VALUES( "+id+", \"" + name + "\", \"" + author + "\", \"" + level + "\",\"" +publisher+ "\",\""+ISBN+ "\","+page +")";
+            string sql = "INSERT INTO book ( id,name,author,level,publisher,ISBN,page )VALUES( "+id+", \"" + name + "\", \"" + author + "\", \"" + level + "\",\"" +publisher+ "\",\""+ISBN+ "\","+page +")";
             cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             sql = "INSERT INTO id_name (id,name) values ("+ id +",\""+name+"\")";
@@ -164,7 +164,7 @@ namespace sqlconnection
             rdr = numbersearch(id);
             if (rdr.Read()) { rdr.Close(); return 1; }
             rdr.Close();
-            string sql = "INSERT INTO book ( id,name,auther,level,publisher,ISBN,page )VALUES( " + id + ", \"" + name + "\", \"" + author + "\", \"" + level + "\",\"" + publisher + "\",\"" + year+ "\",\"" + time + "\")";
+            string sql = "INSERT INTO cd ( id,name,author,level,publisher,year,time )VALUES( " + id + ", \"" + name + "\", \"" + author + "\", \"" + level + "\",\"" + publisher + "\",\"" + year+ "\",\"" + time + "\")";
             cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             sql = "INSERT INTO id_name (id,name) values (" + id + ",\"" + name + "\")";
@@ -176,14 +176,33 @@ namespace sqlconnection
         {
             rdr = numbersearch(id);
             if (rdr.Read()) { rdr.Close(); return 1; }
-            rdr.Close();
-            string sql = "INSERT INTO book ( id,name,author,level,publisher,ISBN,page )VALUES( " + id + ", \"" + name + "\", \"" + author + "\", \"" + level + "\",\"" + country + "\",\"" + size + "\")";
+            rdr.Close();          
+            string sql = "INSERT INTO art ( id,name,author,level,country,size )VALUES( " + id + ", \"" + name + "\", \"" + author + "\", \"" + level + "\",\"" + country + "\",\"" + size + "\")";
             cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             sql = "INSERT INTO id_name (id,name) values (" + id + ",\"" + name + "\")";
             cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             return 0;
+        }
+
+        public void bookupdata(string id,string author, string level, string publisher, string ISBN, string page)
+        {
+            string sql = "UPDATE book set author=\""+author+"\", level=\""+level+"\",publisher=\""+publisher+"\",ISBN=\""+ISBN+"\",page=\""+page+"\" where id="+id;
+            cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+        }
+        public void CDupdata(string id, string author, string level, string publisher, string year, string time)
+        {
+            string sql = "UPDATE CD set author=\"" + author + "\", level=\"" + level + "\",publisher=\"" + publisher + "\",year=\"" + year+ "\",time=\"" + time + "\" where id=" + id;
+            cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+        }
+        public void artupdata(string id, string author, string level, string country, string size)
+        {
+            string sql = "UPDATE art set author=\"" + author + "\", level=\"" + level + "\",country=\"" + country + "\",size=\"" + size+ "\" where id=" + id;
+            cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
         }
 
         public int searchtotal(string table)

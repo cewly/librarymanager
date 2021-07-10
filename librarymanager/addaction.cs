@@ -35,13 +35,13 @@ namespace librarymanager
         private void CDRButton_CheckedChanged(object sender, EventArgs e)
         {
             setCD();
-            if (leftbook == 0) { button1.Enabled = false; MessageBox.Show("视频光盘库已满!"); }
+            if (leftCD == 0) { button1.Enabled = false; MessageBox.Show("视频光盘库已满!"); }
         }
 
         private void artRButton_CheckedChanged(object sender, EventArgs e)
         {
             setart();
-            if (leftbook == 0) { button1.Enabled = false; MessageBox.Show("图画库已满!"); }
+            if (leftart == 0) { button1.Enabled = false; MessageBox.Show("图画库已满!"); }
         }
 
         private void button1_Click(object sender, EventArgs e)
