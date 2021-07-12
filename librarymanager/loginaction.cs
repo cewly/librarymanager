@@ -60,10 +60,9 @@ namespace librarymanager
 
         private void signupButton_Click(object sender, EventArgs e)
         {
-            signupaction signup = new signupaction();
+            signupaction signup = new signupaction();//新建一个注册类
             this.Hide();
             signup.Show();
         }
-
     }
 }
